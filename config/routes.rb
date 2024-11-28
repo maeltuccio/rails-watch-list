@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
 
-  # Defines the root path route ("/")
-  # root "posts#index"
+  resources :lists, only: [:index, :show, :new, :create] do
+    # Routes pour la gestion des signets au sein d'une liste
+    resources :bookmarks, only: [:new, :create]
+  end
+  # Route pour supprimer un signet spécifique
+  delete 'bookmarks/:id', to: 'bookmarks#destroy', as: 'bookmark'
 end
