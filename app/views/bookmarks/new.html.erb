@@ -10,8 +10,7 @@
     </ul>
   <% end %>
 
-  <%= f.input :movie_id, collection: @movies.collect { |movie| [movie.title, movie.id] }, label: "Choisir un film", prompt: "Sélectionnez un film" %>
-
+<%= f.association :movie, collection: Movie.all, prompt: "Select a movie", class: "form-control" %>
   <%= f.input :comment, label: "Ajouter un commentaire" %>
 
   <%= f.submit "Ajouter ce film à la liste" %>
