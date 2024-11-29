@@ -1,5 +1,7 @@
 <h1><%= @list.name %></h1>
-
+<% if @list.photo.attached? %>
+<%= cl_image_tag @list.photo.key, height: 300, width: 400, crop: :fill %>
+<% end  %>
 <h2>Films dans cette liste</h2>
 
 <% if @movies.any? %>
